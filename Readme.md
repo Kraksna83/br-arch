@@ -1,14 +1,18 @@
 # BR-Arch - Chunk-Based File Archiver
 
-BR-Arch is a Python utility designed to organize files into evenly-sized chunks, making it ideal for archiving large collections of files to fixed-size media like DVDs, Blu-rays, or tape storage.
+BR-Arch is a Python utility designed to organize files into evenly-sized chunks, making it ideal for archiving large collections of files to fixed-size media like DVDs, Blu-rays, or tape storage. It will NOT split files larger than the media size, you need to do that manually, which makes it virtually useless for stuff like movie collections. 
+
+My intent was to backup photos/documents from my nextcloud instance to blu-ray discs. 
+
+It will create subdirectories full of symlinks to $CHUNKSIZE worth of files that can be turned into a burnable ISO image (making the iso is not a feature of the program, but it can output genisofs syntax to do that. )
 
 ## Features
 
 - Group files into chunks of configurable size (default 20GB)
 - Keep files from the same directory together when possible
 - Generate HTML, JSON, and CSV catalogues of all files
-- Create symlinks to original files for easy access
-- Calculate MD5 checksums for data integrity verification
+- Create symlinks to original files for easy access (for easy ISO image build/burn and space efficiency)
+- Calculate MD5 checksums for data integrity verification (optional)
 - Mark chunks as "burnt" when they're written to media
 - Verify and repair symlinks with a dedicated check command
 - Incremental updates - add new files to existing chunk structure
@@ -20,7 +24,7 @@ BR-Arch is a Python utility designed to organize files into evenly-sized chunks,
 Clone the repository and ensure you have Python 3.6+ installed:
 
 ```bash
-git clone https://github.com/yourusername/br-arch.git
+git clone https://github.com/Krasna83/br-arch.git
 cd br-arch
 ```
 
@@ -40,6 +44,8 @@ Options:
 - `-o, --output`: Set output directory (default: current directory)
 - `-m, --md5`: Calculate MD5 hashes for all files
 - `-s, --size`: Chunk size in GB (default: 20)
+
+### 
 
 ### Marking Chunks as Burnt
 
