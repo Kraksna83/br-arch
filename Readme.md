@@ -147,7 +147,7 @@ This command rescans all directories that were previously added to the archive, 
    This creates chunks of 4.7GB (DVD size) with MD5 hashes.
 
 2. **Create ISO Image**:
-   After writing chunks 1-3 to DVDs, mark them as burnt:
+   When happy with chuns, turn the "full" ones into ISO, one at a time :
    ```bash
    python br-arch.py iso
    ```
