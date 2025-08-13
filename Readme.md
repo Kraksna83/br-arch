@@ -146,38 +146,45 @@ This command rescans all directories that were previously added to the archive, 
    ```
    This creates chunks of 4.7GB (DVD size) with MD5 hashes.
 
-2. **Write chunks to media**:
+2. **Create ISO Image**:
+   After writing chunks 1-3 to DVDs, mark them as burnt:
+   ```bash
+   python br-arch.py iso
+   ```
+   Check and run the command that it outputs. 
+
+3. **Write chunks to media**:
    After writing chunks 1-3 to DVDs, mark them as burnt:
    ```bash
    python br-arch.py burn 1 2 3
    ```
 
-3. **Add more files**:
+4. **Add more files**:
    When you have more files to archive:
    ```bash
    python br-arch.py add /data/more_photos
    ```
    New files will only be added to non-burnt chunks.
 
-4. **Verify symlinks**:
+5. **Verify symlinks**:
    ```bash
    python br-arch.py check -f
    ```
    This checks and repairs any missing symlinks.
 
-5. **Start fresh if needed**:
+6. **Start fresh if needed**:
    ```bash
    python br-arch.py reset -y
    ```
    This backs up your chunks_meta.json and clears all chunk directories.
 
-6. **Restore from a backup**:
+7. **Restore from a backup**:
    ```bash
    python br-arch.py restore chunks_meta_20240531_120101.json.bak
    ```
    This recreates your chunk structure from a backup metadata file.
 
-7. **Rescan all source directories for new files**:
+8. **Rescan all source directories for new files**:
    ```bash
    python br-arch.py rescan -m
    ```
